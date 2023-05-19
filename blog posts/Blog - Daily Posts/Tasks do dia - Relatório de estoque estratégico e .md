@@ -1,0 +1,1 @@
+Olá pessoal tudo bem? Hoje trabalhei com o relatório de estoque estratégico e também fechei a versão do WPP.
