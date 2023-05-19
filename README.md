@@ -1,2 +1,2 @@
-# blog
-conteúdo do blog oficial
+# Blog
+Blog pessoal
