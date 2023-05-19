@@ -1,0 +1,167 @@
+/* Você pode adicionar estilos globais a este arquivo e também importar outros arquivos de estilo */
+@import "theming.scss";
+@import "webkit.scss";
+
+/* constantes */
+$defaultMargin: 5pt;
+$midMargin: 10pt;
+$footer-height: 45pt;
+
+/* Stilo padrão */
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+  header, main, footer{
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Acho que fica mais bonito um pouco mais ao centro */
+header{
+  padding-left:  3%;
+  padding-right: 3%;
+}
+
+/* Estilos padrões relacionados a espaçamento */
+.justify-space-between {
+  justify-content: space-between;
+}
+.justify-center{
+  justify-content: center;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.flex-justify-center {
+  @extend .justify-center;
+  @extend .display-flex;
+}
+
+/* Relacionados a margem */
+
+.default-margin {
+  margin: $defaultMargin $defaultMargin $defaultMargin $defaultMargin;
+}
+
+.default-mid-margin {
+  margin: $midMargin $midMargin $midMargin $midMargin;
+}
+
+.no-margin {
+  margin: 0 0 0 0;
+}
+
+/* Relacionados ao tamanho do elemento */
+
+.full-width {
+  width: 100%;
+  &.default-margin{
+    width: calc(100% - (2 * $defaultMargin));
+  }
+  &.default-mid-margin {
+    width: calc(100% - (2 * $midMargin));
+  }
+}
+
+.full-height {
+  height: 100%;
+  &.default-margin {
+    height: calc(100% - (2 * $defaultMargin));
+  }
+}
+
+/* Estilos relacionados ao estado do elemento */
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* Relacionados a como o elemento se apresenta na tela */
+
+.background-transparent {
+  background-color: transparent;
+}
+
+/* Serve para deixar em formato de círculo */
+.circular {
+  border-radius: 50%;
+  padding: 0pt;
+  // caso tenha uma imagem deixar transparente para que a imagem seja destacada
+  &:has(> img) {
+    // Inclui os estilos da classe .background-transparent para deixar o fundo transparente
+    @extend .background-transparent;
+  }
+}
+
+.no-borders {
+  border: none;
+}
+
+.scroll-container {
+  /* outros estilos legais estão em webkit.scss */
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* Estilos relacionados a cores */
+a{
+  color:white;
+}
+
+a:hover{
+  color: wheat;
+}
+
+.btn-link, a{
+  text-decoration: none;
+  &.dark-theme {
+      color: wheat;
+  }
+}
+
+.dark-theme .btn-link, .dark-theme a:hover{
+  @extend .btn-link;
+  color: rgb(250, 250, 103);
+}
+
+/* Relacionados a posicionamento */
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+footer {
+  height: $footer-height;
+}
+
+main {
+  margin-bottom: $footer-height;
+}
+/* Estilos especificos para sobrescrever estilos padrões */
+
+  /* Mais especifico, sobrescreve o css do slider */
+  mat-slider.full-width {
+    @extend .full-width;
+  }
+  mat-slider.default-mid-margin {
+    @extend .default-mid-margin;
+  }
+
+  /* para torna-lo mais especifico que o CSS do typografy e ajustar para tirar a margem que ele coloca no h1.
+    ( não é o mais elegante, mas resolve o problema de forma simples, priorizo o entendimento do código sempre ) */
+  h1.no-margin {
+    @extend .no-margin;
+  }
+  a.no-margin{
+    @extend .no-margin;
+  }

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12 col-md-1 d-flex"></div>
+  <div class="col-sm-12 col-md-10">
+    <mat-card class="tabs-section default-margin">
+      <accordion class="default-margin theme-switcher">
+        <accordion-group
+          class="default-margin"
+          *ngFor="let item of results"
+          heading="{{ item.title || item.name || item.fullName }}"
+        >
+          <article class="default-margin">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <img src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" alt="{{item.title || item.name || item.fullName}}" class="img-fluid">
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <br class="d-md-none d-sm-block">
+                {{ item.description || 'Sem descrição' }}
+              </div>
+            </div>
+          </article>
+        </accordion-group>
+      </accordion>
+      <mat-paginator #paginator
+        class="default-margin"
+        [length]="totalResults"
+        [pageSize]="resultsPerPage"
+        (page)="onPageChange($event)"
+      >
+      </mat-paginator>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-sm-12 col-md-1 d-flex"></div>
+    <div class="col-sm-12 col-md-3">
+      <div class="default-margin">
+        <div class="flex-justify-center default-margin-top">
+          <span class="badge bg-secondary default-mid-margin">Quantidade de resultados por página</span>
+        </div>
+        <mat-slider
+          class="full-width default-margin"
+          min="1"
+          max="5"
+          step="1"
+          showTickMarks
+          discrete
+          [displayWith]="formatLabel"
+          (change)="optionChanged($event)"
+        >
+          <input matSliderThumb />
+        </mat-slider>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-7 d-flex justify-content-center">
+      <mat-form-field class="default-margin full-width">
+        <mat-label>Buscar</mat-label>
+        <input matInput placeholder="Digite sua pesquisa aqui" (input)="searchChanged($event)"/>
+      </mat-form-field>
+    </div>
+  </div>
